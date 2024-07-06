@@ -10,5 +10,13 @@ const user_regex = Joi.object({
   email: Joi.string().min(6).max(56).email({tlds: {allow: false}})
 })
 
+const login_regex = Joi.object({
+  nickname: Joi.string().min(4).max(16).required(),
+  password: Joi.string().min(6).max(256).required()
+})
 
-export default user_regex
+
+export {
+  user_regex,
+  login_regex
+}

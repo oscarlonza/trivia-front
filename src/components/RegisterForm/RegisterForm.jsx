@@ -1,7 +1,10 @@
-import user_regex from "../../services/validation/auth.validation.js"
+import { useNavigate } from "react-router-dom"
+import { user_regex } from "../../services/validation/auth.validation.js"
 
 
 const RegisterForm = () => {
+
+  const navigate = useNavigate()
 
   const handleSubmit = async event => {
     event.preventDefault()
@@ -19,17 +22,29 @@ const RegisterForm = () => {
     const { error } = user_regex.validate(user)
     if (error) return alert(error.details[0].message)
 
-    const register = await fetch('http://127.0.0.1:9000/api/auth/register', {
-      method: 'POST',
-      headers: {
-        "Content-Type": 'application/json'
-      },
-      body: JSON.stringify(user)
-    })
+    try {
+      const register = await fetch('http://127.0.0.1:9000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          "Content-Type": 'application/json'
+        },
+        body: JSON.stringify(user)
+      })
 
-    const response = await register.json()
+      if (!register.ok) return alert('Error en la peticion al servidor')
+  
+      const response = await register.json()
 
-    console.log(response);
+      if (!response.process) return alert('Error al guardar el nuevo usuario')
+
+      alert('Usuario guardado con exit')
+
+      navigate('/login')
+  
+    } catch (Error) {
+      alert('Error en la peticion al servidor')
+    }
+    
   }
 
   return (
