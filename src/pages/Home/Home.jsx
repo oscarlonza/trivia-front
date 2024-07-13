@@ -1,8 +1,17 @@
-import style from './home.module.css'
+import QuestionCard from "@/components/QuestionCard";
 
-const Home = () =>  {
-    return <h1 className={style.titulo}>Pagina de home</h1>
-}
+import styles from "./home.module.css";
 
+const Home = () => {
+  return (
+    <div className={styles.container}>
+      <header>HEADER</header>
+      <main className={styles.mainContent}>
+        <QuestionCard />
+      </main>
+      <footer>FOOTER</footer>
+    </div>
+  );
+};
 
-export default Home
+export default Home;
