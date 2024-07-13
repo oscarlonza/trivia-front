@@ -58,7 +58,7 @@ const QuestionCard = () => {
               Authorization: userToken,
             },
             body: JSON.stringify({
-              user_id: userInfo._id,
+              user_id: userInfo?._id,
               answer: answer,
             }),
           }
@@ -73,7 +73,7 @@ const QuestionCard = () => {
         console.error("Error when answering the question", e);
       }
     },
-    [question._id, userInfo._id, userToken]
+    [question?._id, userInfo?._id, userToken]
   );
 
   useEffect(() => {
