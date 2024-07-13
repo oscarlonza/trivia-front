@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom"
 import { login_regex } from "../../services/validation/auth.validation"
+import style from './loginForm.module.css'
 
+const {form, input, button, label, link} = style
 
 const LoginForm = () => {
 
@@ -50,12 +52,13 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="nickname" placeholder="nickname" required />
-      <br />
-      <input type="password" name="password" placeholder="******" required />
-      <br />
-      <input type="submit" value={"Ingresar"} />
+    <form className={form} onSubmit={handleSubmit}>
+      <label htmlFor="nickname" className={label}>Nickname</label>
+      <input className={input} type="text" name="nickname" placeholder="nickname" required /> 
+      <label htmlFor="password" className={label}>Password</label>   
+      <input className={input} type="password" name="password" placeholder="******" required />      
+      <input className={button} type="submit" value={"Ingresar"} />
+      <a href="/register" className={link}>Registrarse</a>
     </form>
   )
 }
