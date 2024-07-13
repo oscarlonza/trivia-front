@@ -4,6 +4,7 @@ import style from './editProfileForm.module.css'
 
 const EditProfileForm = () => {
     const [profile, setProfile] = useState({
+        _id: '',
         name: '',
         nickname: '',
         cel: '',
@@ -13,14 +14,26 @@ const EditProfileForm = () => {
     });
 
     useEffect(() => {
-        const fetchProfile = () => {
-            const token = localStorage.getItem('user');
-            const token_decoded = jwtDecode(token);
-            setProfile(token_decoded.user);
-        };
-
-        fetchProfile();
+        const token = localStorage.getItem('user');
+        const token_decoded = jwtDecode(token);
+        setProfile(token_decoded.user);
     }, []);
+
+    const getUserData = () => {
+        const token = localStorage.getItem('user');
+        const token_decoded = jwtDecode(token);
+        delete (profile.score);
+
+        const currentUser = token_decoded.user;
+        const changedData = {};
+        Object.keys(profile).forEach(key => {
+            if (currentUser[key] !== profile[key]) {
+                changedData[key] = profile[key];
+            }
+        });
+
+        return changedData;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,12 +46,16 @@ const EditProfileForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('/api/user/profile', {
+            const token = localStorage.getItem('user');
+            const userData = getUserData();
+
+            const response = await fetch(`http://127.0.0.1:9000/api/user/update/${profile._id}`, {
                 method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `${token}`
                 },
-                body: JSON.stringify(profile)
+                body: JSON.stringify(userData)
             });
             const data = await response.json();
             alert('Perfil actualizado exitosamente');
