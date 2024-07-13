@@ -49,7 +49,7 @@ const EditProfileForm = () => {
             const token = localStorage.getItem('user');
             const userData = getUserData();
 
-            const response = await fetch(`http://127.0.0.1:9000/api/user/update/${profile._id}`, {
+            const update = await fetch(`http://127.0.0.1:9000/api/user/update/${profile._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,13 @@ const EditProfileForm = () => {
                 },
                 body: JSON.stringify(userData)
             });
-            const data = await response.json();
+
+            if (!update.ok) return alert('Error en la peticion al servidor')
+
+            const response = await update.json()
+
+            if (!response.process) return alert('Error al editar el usuario')
+
             alert('Perfil actualizado exitosamente');
         } catch (error) {
             console.error('Hubo un error actualizando el perfil', error);
