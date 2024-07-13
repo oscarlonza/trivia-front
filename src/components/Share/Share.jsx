@@ -12,6 +12,12 @@ const Share = () => {
     const handleOpen = () => {
         setOpen(true);
     };
+
+    const hadleSubmit = async event=>{
+        event.preventDefault()
+        setOpen(false);
+    }
+
     return (
         <>
             <button id={style.shareButton} onClick={handleOpen}>
@@ -22,9 +28,11 @@ const Share = () => {
                 <>
                     <h1>Compartir</h1>
                     <p>Invita a tus amigos a jugar trivia Marvel a través de SMS!</p>
-                    <form>
-                        <input type="tel" placeholder="+57 xxx xxxxxxx"></input>
+                    <form onSubmit={hadleSubmit}>
+                        <label htmlFor="number">+57</label>
+                        <input name="number" type="tel" placeholder="xxx xxxxxxx" maxLength="10" required></input>
                         <button type='submit'>Enviar</button>
+                        <button type="button" onClick={handleClose}>Cancelar</button>
                     </form>
                 </>
             </Modal>
