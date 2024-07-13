@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import RedirectRoute from "./utils/RedirectRoute";
 import Developer from "./pages/Developer";
+import Score from "./pages/Score";
 
 const App = (props) => {
   return (
