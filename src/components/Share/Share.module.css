@@ -1,0 +1,9 @@
+#shareButton{
+   border: none;
+   background-color: transparent;
+}
+
+#shareIcon{
+    width: 30px;
+    height: auto;
+}

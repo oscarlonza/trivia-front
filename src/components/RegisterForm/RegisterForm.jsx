@@ -1,67 +1,100 @@
-import { useNavigate } from "react-router-dom"
-import { user_regex } from "../../services/validation/auth.validation.js"
-
-
+import { useNavigate } from "react-router-dom";
+import { user_regex } from "../../services/validation/auth.validation.js";
+import style from "./registerForm.module.css";
+import { Link } from "react-router-dom";
 const RegisterForm = () => {
+  const navigate = useNavigate();
+  const { textLabel, inputs, sendButton, spanText, linkText, contentSpan } =
+    style;
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-  const navigate = useNavigate()
-
-  const handleSubmit = async event => {
-    event.preventDefault()
-
-    const { name, nickname, cel, password, confirm_password } = event.target
+    const { name, nickname, cel, password, confirm_password } = event.target;
 
     const user = {
       name: name.value,
-      nickname: nickname.value, 
+      nickname: nickname.value,
       cel: cel.value,
       password: password.value,
-      confirm_password: confirm_password.value
-    }    
-  
-    const { error } = user_regex.validate(user)
-    if (error) return alert(error.details[0].message)
+      confirm_password: confirm_password.value,
+    };
+
+    const { error } = user_regex.validate(user);
+    if (error) return alert(error.details[0].message);
 
     try {
-      const register = await fetch('http://127.0.0.1:9000/api/auth/register', {
-        method: 'POST',
+      const register = await fetch("http://127.0.0.1:9000/api/auth/register", {
+        method: "POST",
         headers: {
-          "Content-Type": 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(user)
-      })
+        body: JSON.stringify(user),
+      });
 
-      if (!register.ok) return alert('Error en la peticion al servidor')
-  
-      const response = await register.json()
+      if (!register.ok) return alert("Error en la peticion al servidor");
 
-      if (!response.process) return alert('Error al guardar el nuevo usuario')
+      const response = await register.json();
 
-      alert('Usuario guardado con exit')
+      if (!response.process) return alert("Error al guardar el nuevo usuario");
 
-      navigate('/login')
-  
+      alert("Usuario guardado con exit");
+
+      navigate("/login");
     } catch (Error) {
-      alert('Error en la peticion al servidor')
+      alert("Error en la peticion al servidor");
     }
-    
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="name" placeholder="Nombre" required />
+      <label className={textLabel}>
+        Nombre:
+        <input className={inputs} type="text" name="name" required />
+      </label>
       <br />
-      <input type="text" name="nickname" placeholder="Usuario" required/>
+      <label className={textLabel}>
+        {" "}
+        Nickname:
+        <input className={inputs} type="text" name="nickname" required />
+      </label>
       <br />
-      <input type="text" name="cel" placeholder="+57300000000" required/>
+      <label className={textLabel}>
+        {" "}
+        Cel:
+        <input className={inputs} type="text" name="cel" required />
+        <br />
+      </label>
+      <label className={textLabel}>
+        Password:
+        <input className={inputs} type="password" name="password" required />
+      </label>
       <br />
-      <input type="password" name="password" placeholder="******" required/>
-      <br />
-      <input type="password" name="confirm_password" placeholder="******" required/>
-      <br />
-      <input type="submit" value={"Registrar"} />
-    </form>
-  )
-}
+      <label className={textLabel}>
+        {" "}
+        Confirmar Password
+        <input
+          className={inputs}
+          type="password"
+          name="confirm_password"
+          required
+        />
+      </label>
 
-export default RegisterForm
+      <br />
+
+      <input className={sendButton} type="submit" value={"Registrarse"} />
+      <br />
+      <div className={contentSpan}>
+        <span className={spanText}>
+          ¿Ya tienes una cuenta?{" "}
+          <Link className={linkText} to={"/login"}>
+            {" "}
+            Inicia sesión{" "}
+          </Link>
+        </span>
+      </div>
+    </form>
+  );
+};
+
+export default RegisterForm;

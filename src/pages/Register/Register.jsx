@@ -1,23 +1,22 @@
-import Logo from "../../components/Logo"
-import RegisterForm from "../../components/RegisterForm"
-
-import style from './register.module.css'
+import Logo from "../../components/Logo";
+import RegisterForm from "../../components/RegisterForm";
+import style from "./register.module.css";
 
 const Register = () => {
+  const { card, logo, form, card2 } = style;
 
-    const { card, logo } = style
-
-    return (
-        <div className={card}>
-            <div className={logo}>
-                <Logo />
-            </div>
-            <div>
-                <RegisterForm />
-            </div>
+  return (
+    <div className={card}>
+      <div className={card2}>
+        <div className={logo}>
+          <Logo />
         </div>
-    )
-}
+        <div className={form}>
+          <RegisterForm />
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-export default Register
+export default Register;

@@ -1,0 +1,61 @@
+body {
+    height: calc(100vh - 133px) !important;
+    margin-top: 133px !important;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    height: 133px;
+    top: 0;
+    left: 0;
+}
+
+.header .content {
+    background-color: #232d5d;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    height: 133px;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+}
+
+.header a {
+    text-decoration: none;
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    background-color: lightgrey;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.score {
+    color: white;
+    font-size: x-large;
+    display: flex;
+    align-items: center;
+}
+
+.score a {
+    color: white;
+    margin-left: 2rem;
+}
+
+.dummy {
+    background-color: #ffcc01;
+    font-weight: bold;
+    font-size: x-large;
+    padding: 10px;
+    border-radius: 50%;
+    height: 35px;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
