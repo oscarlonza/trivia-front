@@ -1,0 +1,122 @@
+.textLabel {
+  color: yellow;
+  font-family: sans-serif;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.inputs {
+  max-width: 100%;
+  max-height: 100%;
+  width: 30vw;
+  height: 5vh;
+  background: #1c2733;
+  border: none;
+  border-radius: 8px;
+}
+
+.sendButton {
+  background: #fe0000;
+  max-width: 100%;
+  max-height: 100%;
+  width: 30vw;
+  height: 5vh;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-size: large;
+  font-family: sans-serif;
+}
+
+.contentSpan {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-top: 2vh;
+}
+
+.spanText {
+  color: yellow;
+  text-align: center;
+}
+
+.linkText {
+  color: yellow;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .inputs,
+  .sendButton {
+    width: 70vw;
+    height: 7vh;
+  }
+
+  .sendButton {
+    font-size: medium;
+  }
+
+  .contentSpan {
+    padding: 5px;
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .inputs,
+  .sendButton {
+    width: 80vw;
+    height: 6.5vh;
+  }
+
+  .sendButton {
+    font-size: medium;
+  }
+
+  .contentSpan {
+    padding: 5px;
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 425px) {
+  .inputs,
+  .sendButton {
+    width: 90vw;
+    height: 6vh;
+  }
+
+  .sendButton {
+    font-size: small;
+  }
+
+  .contentSpan {
+    padding: 5px;
+    margin-top: 1vh;
+  }
+}
+
+@media (max-width: 375px) {
+  .inputs,
+  .sendButton {
+    width: 95vw;
+    height: 5.5vh;
+  }
+
+  form {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .sendButton {
+    font-size: small;
+  }
+
+  .contentSpan {
+    padding: 5px;
+    margin-top: 1vh;
+  }
+}
