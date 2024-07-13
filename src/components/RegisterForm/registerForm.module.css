@@ -51,7 +51,7 @@
 @media (max-width: 1024px) {
   .inputs,
   .sendButton {
-    width: 70vw;
+    width: 50vw;
     height: 7vh;
   }
 
