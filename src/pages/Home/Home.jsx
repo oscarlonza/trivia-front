@@ -1,15 +1,12 @@
-import Share from '../../components/Share'
+import UserIconMenu from '../../components/UserIcon';
 import style from './home.module.css'
 
 const Home = () =>  {
-    
-    return (
-        <>
-        <Share></Share>
-        <h1 className={style.titulo}>Pagina de home</h1>
-        </>
-        
-    ) 
+      return (
+        <div className="App">
+          {true && <UserIconMenu  />}
+        </div>
+      );
 }
 
 
