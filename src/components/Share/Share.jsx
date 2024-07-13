@@ -13,9 +13,41 @@ const Share = () => {
         setOpen(true);
     };
 
-    const hadleSubmit = async event=>{
+    const hadleSubmit = async event => {
+        const userName = localStorage.getItem('user').nickname
+        const token = localStorage.getItem('user')
+
         event.preventDefault()
-        setOpen(false);
+
+        const { number } = event.target
+
+
+        try {
+            const sendSMS = await fetch('http://127.0.0.1:9000/api/send/send', {
+                method: 'POST',
+                headers: {
+                    "Content-Type": 'application/json',
+                    "Authorization": token
+                },
+                body: {
+                    "nickname": userName,
+                    "cel": number
+                }
+
+            }
+            )
+            if (!sendSMS.ok) return alert('Error en la peticion al servidor')
+
+            const response = await sendSMS.json()
+
+            if (!response.process) return alert('Error al guardar el nuevo usuario')
+
+            alert('¡Invitación enviada!')
+            setOpen(false);
+
+        } catch (error) {
+            alert('Error en la peticion al servidor')
+        }
     }
 
     return (
