@@ -3,12 +3,14 @@ import { jwtDecode } from 'jwt-decode'
 import UserIconMenu from '../UserIcon/'
 
 const Header = (props) => {
-    
+
     let localScore = -1
     let scoreElement = <></>
     const rankingUrl = "#"
     let rankingElement = <a href={rankingUrl}>Ranking</a>
-    let userElement = <a href="/login">Log in</a>
+    let userElement = <div className={style.dummy}>
+        <a href="/login">Log in</a>
+    </div>
 
     const local = localStorage.getItem("user")
     if (local) {
@@ -17,9 +19,7 @@ const Header = (props) => {
             localScore = tokenDecode.user.score.score
             scoreElement = <p>Score: {props.score || localScore} </p>
             rankingElement = <a href={rankingUrl}>Ranking: #{props.ranking || 1}</a>
-            //Uncomment bellow code after fixing UserIconMenu
-            //userElement = <UserIconMenu />
-            userElement = <a href="/#">Log out</a>
+            userElement = <UserIconMenu />
         } catch (error) {
             console.log(error)
         }
@@ -35,9 +35,7 @@ const Header = (props) => {
                     {scoreElement}
                     {rankingElement}
                 </div>
-                <div className={style.dummy}>
-                    {userElement}
-                </div>
+                {userElement}
             </div>
         </div>
 
