@@ -1,5 +1,4 @@
-
-body{
+body {
     height: calc(100vh - 133px) !important;
     margin-top: 133px !important;
 }
@@ -22,6 +21,10 @@ body{
     align-items: center;
 }
 
+.header a {
+    text-decoration: none;
+}
+
 .logo {
     height: 100px;
     width: 100px;
@@ -41,11 +44,8 @@ body{
 }
 
 .score a {
-    margin-left: 45px;
-    text-decoration: none;
-    color: white
+    color: white;
 }
-
 
 .dummy {
     background-color: #ffcc01;
@@ -53,8 +53,7 @@ body{
     font-size: x-large;
     padding: 10px;
     border-radius: 50%;
-    height: 35px;
-    width: 60px;
+    height: 35px;    
     display: flex;
     align-items: center;
     justify-content: center;

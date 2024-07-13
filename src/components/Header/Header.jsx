@@ -2,12 +2,24 @@ import style from "./header.module.css"
 import { jwtDecode } from 'jwt-decode'
 
 const Header = (props) => {
+    
+    let localScore = -1
+    let scoreElement = <></>
+    const rankingUrl = "#"
+    let rankingElement = <a href={rankingUrl}>Ranking</a>
+    let userElement = <a href="/login">Log in</a>
 
     const local = localStorage.getItem("user")
-    let localScore = -1
     if (local) {
-        const tokenDecode = jwtDecode(local)
-        localScore = tokenDecode.user.score.score
+        try {
+            const tokenDecode = jwtDecode(local)
+            localScore = tokenDecode.user.score.score
+            scoreElement = <p>Score: {props.score || localScore} </p>
+            rankingElement = <a href={rankingUrl}>Ranking: #{props.ranking || 1}</a>
+            userElement = <UserIconMenu />
+        } catch (error) {
+            console.log('User not logged in')
+        }
     }
 
     return (
@@ -17,10 +29,12 @@ const Header = (props) => {
                     <img src="./Logo.png" alt="Trivia Superhéroes" />
                 </a>
                 <div className={style.score}>
-                    <p>Score: {props.score || localScore} </p>
-                    <a href="#">Ranking: #{props.ranking || 1}</a>
+                    {scoreElement}
+                    {rankingElement}
                 </div>
-                <div className={style.dummy}>JD</div>
+                <div className={style.dummy}>
+                    {userElement}
+                </div>
             </div>
         </div>
 
