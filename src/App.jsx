@@ -25,6 +25,7 @@ const App = (props) => {
           path="/dashboard"
           element={<ProtectedRoute element={<h1>Hola</h1>} />}
         />
+
         <Route path="/score" element={<Score/>} />
         <Route path="/*" element={<h1>404</h1>} />
       </Routes>
