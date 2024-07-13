@@ -1,12 +1,12 @@
-import UserIconMenu from '../../components/UserIcon';
-import style from './home.module.css'
+import Header from '../../components/Header'
 
-const Home = () =>  {
-      return (
-        <div className="App">
-          {true && <UserIconMenu  />}
-        </div>
-      );
+const Home = () => {
+  return (
+    <div>
+      <Header />
+      <h1>Home page</h1>
+    </div>
+  );
 }
 
 
