@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./utils/ProtectedRoute";
 import RedirectRoute from "./utils/RedirectRoute";
 import Developer from "./pages/Developer";
+import Score from "./pages/Score";
 
 const App = (props) => {
   return (
@@ -24,6 +25,7 @@ const App = (props) => {
           path="/dashboard"
           element={<ProtectedRoute element={<h1>Hola</h1>} />}
         />
+
         <Route path="/score" element={<Score/>} />
         <Route path="/*" element={<h1>404</h1>} />
       </Routes>
