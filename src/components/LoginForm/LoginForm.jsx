@@ -22,7 +22,7 @@ const LoginForm = () => {
     if (error) return alert(error.details[0].message)
 
     try {
-      const login = await fetch('http://localhost:9000/api/auth/login', {
+      const login = await fetch('http://13.58.14.235:9000/api/auth/login', {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json'
