@@ -2,6 +2,8 @@ import style from './Share.module.css'
 import Modal from '../Modal';
 import React from "react";
 
+const isLoggedIn = localStorage.getItem('user')
+
 const Share = () => {
     const [open, setOpen] = React.useState(false);
 
@@ -52,9 +54,12 @@ const Share = () => {
 
     return (
         <>
-            <button id={style.shareButton} onClick={handleOpen}>
-                <img id={style.shareIcon} src="./share-icon.png" alt="Logo trivia" />
-            </button>
+            {isLoggedIn ? 
+                <button id={style.shareButton} onClick={handleOpen}>
+                    <img id={style.shareIcon} src="./share-icon.png" alt="Logo trivia" />
+                </button> 
+            : null}
+
 
             <Modal isOpen={open} onClose={handleClose}>
                 <>
