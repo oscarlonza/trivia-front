@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
-import style from './editProfileForm.module.css'
+import style from './editProfileForm.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const EditProfileForm = () => {
+    
+    const navigate = useNavigate()
+
     const [profile, setProfile] = useState({
         _id: '',
         name: '',
@@ -65,6 +69,9 @@ const EditProfileForm = () => {
             if (!response.process) return alert('Error al editar el usuario')
 
             alert('Perfil actualizado exitosamente');
+
+            navigate('/')
+
         } catch (error) {
             console.error('Hubo un error actualizando el perfil', error);
         }
