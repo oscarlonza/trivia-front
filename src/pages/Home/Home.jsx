@@ -1,11 +1,12 @@
 import QuestionCard from "@/components/QuestionCard";
 
 import styles from "./home.module.css";
+import UserIconMenu from "../../components/UserIcon";
 
 const Home = () => {
   return (
     <div className={styles.container}>
-      <header>HEADER</header>
+      <header>{true && <UserIconMenu />}</header>
       <main className={styles.mainContent}>
         <QuestionCard />
       </main>
