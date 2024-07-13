@@ -1,45 +1,61 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom"
-import { Avatar, Menu, MenuItem } from '@mui/material';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Avatar, Menu, MenuItem } from "@mui/material";
 import { jwtDecode } from "jwt-decode";
 
 const UserIconMenu = () => {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
-    const user = localStorage.getItem('user')
-    const userDecoded = jwtDecode(user);
+    const user = localStorage.getItem("user");
+    const userDecoded = jwtDecode(user).user;
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
+
+    console.log(userDecoded);
 
     const handleClose = () => {
         setAnchorEl(null);
     };
     const viewProfile = () => {
-        navigate('/viewprofile')
+        navigate("/viewprofile");
     };
     const logout = () => {
-        navigate('/login')
+        navigate("/login");
         localStorage.clear();
     };
     const getInitials = (name) => {
-        const initials = name.split(' ').map(n => n[0]).join('');
+        const initials = name
+            .split(" ")
+            .map((n) => n[0])
+            .join("");
         return initials.toUpperCase();
     };
 
     return (
         <div>
-            <Avatar onClick={handleClick} style={{ cursor: 'pointer', backgroundColor: '#FFD700', color: '#000' }}>
+            <Avatar
+                onClick={handleClick}
+                style={{ cursor: "pointer", backgroundColor: "#FFD700", color: "#000" }}
+            >
                 {getInitials(userDecoded.name)}
             </Avatar>
-            <Menu
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-            >
-                <MenuItem onClick={() => { viewProfile(); }}>Ver perfil</MenuItem>
-                <MenuItem onClick={() => { logout(); }}>Cerrar sesión</MenuItem>
+            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                <MenuItem
+                    onClick={() => {
+                        viewProfile();
+                    }}
+                >
+                    Ver perfil
+                </MenuItem>
+                <MenuItem
+                    onClick={() => {
+                        logout();
+                    }}
+                >
+                    Cerrar sesión
+                </MenuItem>
             </Menu>
         </div>
     );
