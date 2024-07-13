@@ -6,6 +6,7 @@ import ProtectedRoute from "./utils/ProtectedRoute";
 import RedirectRoute from "./utils/RedirectRoute";
 import Developer from "./pages/Developer";
 import Score from "./pages/Score";
+import EditProfile from "./pages/EditProfile"
 
 const App = (props) => {
   return (
@@ -27,6 +28,7 @@ const App = (props) => {
         />
 
         <Route path="/score" element={<Score/>} />
+        <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/*" element={<h1>404</h1>} />
       </Routes>
     </BrowserRouter>
