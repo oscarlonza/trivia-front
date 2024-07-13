@@ -7,6 +7,7 @@ import style from './login.module.css'
 
 const Login = () => {
 
+<<<<<<< HEAD
   const { card, logo } = style
 
   return (
@@ -15,6 +16,15 @@ const Login = () => {
           <Logo />
       </div>
       <div>
+=======
+  const { fondo, card} = style
+
+  return (
+   
+    <div className={fondo}>
+      <div className={card}>        
+          <Logo />          
+>>>>>>> d01a87069dc8c80abcba971c474fd2d0827de5c5
           <LoginForm />
       </div>
       <div>
@@ -23,7 +33,14 @@ const Login = () => {
       <div>
         <Alert />
       </div>
+<<<<<<< HEAD
     </div>
+=======
+
+    </div>
+      
+   
+>>>>>>> d01a87069dc8c80abcba971c474fd2d0827de5c5
   )
 }
 
