@@ -25,7 +25,7 @@ const Share = () => {
 
 
         try {
-            const sendSMS = await fetch('http://127.0.0.1:9000/api/send/send', {
+            const sendSMS = await fetch('http://localhost:9000/api/send/send', {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json',
