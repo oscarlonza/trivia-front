@@ -37,7 +37,6 @@ body {
 
 .score {
     color: white;
-    font-weight: bold;
     font-size: x-large;
     display: flex;
     align-items: center;
@@ -45,6 +44,7 @@ body {
 
 .score a {
     color: white;
+    margin-left: 2rem;
 }
 
 .dummy {

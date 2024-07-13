@@ -1,5 +1,6 @@
 import style from "./header.module.css"
 import { jwtDecode } from 'jwt-decode'
+import UserIconMenu from '../UserIcon/'
 
 const Header = (props) => {
     
@@ -16,9 +17,11 @@ const Header = (props) => {
             localScore = tokenDecode.user.score.score
             scoreElement = <p>Score: {props.score || localScore} </p>
             rankingElement = <a href={rankingUrl}>Ranking: #{props.ranking || 1}</a>
-            userElement = <UserIconMenu />
+            //Uncomment bellow code after fixing UserIconMenu
+            //userElement = <UserIconMenu />
+            userElement = <a href="/#">Log out</a>
         } catch (error) {
-            console.log('User not logged in')
+            console.log(error)
         }
     }
 
