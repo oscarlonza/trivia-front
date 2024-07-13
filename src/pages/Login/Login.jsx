@@ -5,17 +5,19 @@ import style from './login.module.css'
 
 const Login = () => {
 
-  const { card, logo } = style
+  const { fondo, card} = style
 
   return (
-    <div className={card}>
-      <div className={logo}>
-          <Logo />
-      </div>
-      <div>
+   
+    <div className={fondo}>
+      <div className={card}>        
+          <Logo />          
           <LoginForm />
       </div>
+
     </div>
+      
+   
   )
 }
 
