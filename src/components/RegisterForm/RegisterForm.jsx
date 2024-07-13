@@ -23,7 +23,7 @@ const RegisterForm = () => {
     if (error) return alert(error.details[0].message);
 
     try {
-      const register = await fetch("http://localhost:9000/api/auth/register", {
+      const register = await fetch("http://13.58.14.235:9000/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

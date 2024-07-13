@@ -9,6 +9,8 @@ import Score from "./pages/Score";
 import EditProfile from "./pages/EditProfile"
 
 const App = (props) => {
+
+  console.log("version 2.0.0");
   return (
     <BrowserRouter>
       <Routes>

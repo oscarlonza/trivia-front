@@ -53,7 +53,7 @@ const EditProfileForm = () => {
             const token = localStorage.getItem('user');
             const userData = getUserData();
 
-            const update = await fetch(`http://localhost:9000/api/user/update/${profile._id}`, {
+            const update = await fetch(`http://13.58.14.235:9000/api/user/update/${profile._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

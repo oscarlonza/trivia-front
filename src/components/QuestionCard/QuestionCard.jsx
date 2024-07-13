@@ -24,7 +24,7 @@ const QuestionCard = () => {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch("http://localhost:9000/api/question/get", {
+      const res = await fetch("http://13.58.14.235:9000/api/question/get", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const QuestionCard = () => {
       console.log(answer);
       try {
         const res = await fetch(
-          `http://localhost:9000/api/question/result/${question._id}`,
+          `http://13.58.14.235:9000/api/question/result/${question._id}`,
           {
             method: "POST",
             headers: {

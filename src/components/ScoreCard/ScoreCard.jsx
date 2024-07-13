@@ -8,7 +8,7 @@ const ScoreCard = () => {
     const [scores, setScores] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:9000/api/score/get-all')
+        fetch('http://13.58.14.235:9000/api/score/get-all')
             .then(response => response.json())
             .then(data => {
                 if (data.process) {
