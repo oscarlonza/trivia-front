@@ -27,8 +27,7 @@ const Header = (props) => {
 
     return (
         <div className={style.header}>
-            <div className={style.content}>
-                <a className={style.logo} href="/">
+            <a className={style.logo} href="/">
                     <img src="./Logo.png" alt="Trivia Superhéroes" />
                 </a>
                 <div className={style.score}>
@@ -36,7 +35,6 @@ const Header = (props) => {
                     {rankingElement}
                 </div>
                 {userElement}
-            </div>
         </div>
 
     )

@@ -1,20 +1,18 @@
-
-import QuestionCard from "@/components/QuestionCard";
-
 import styles from "./home.module.css";
-import UserIconMenu from "../../components/UserIcon";
-
+import QuestionCard from "../../components/QuestionCard";
 import Header from '../../components/Header'
+import Footer from '../../components/Footer'
+
 
 const Home = () => {
   return (
-    <div className={styles.container}>
-      <Header></Header>
-      <main className={styles.mainContent}>
+    <main>
+      <Header />
+      <div className={styles.mainContent}>
         <QuestionCard />
-      </main>
-      <footer>FOOTER</footer>
-    </div>
+      </div>
+      <Footer />
+    </main>
   );
 };
 

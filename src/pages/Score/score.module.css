@@ -10,17 +10,7 @@
     padding: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   }
-  
-  body {
-    background: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw; /* Usar 100vw para el ancho */
-    height: 100vh; /* Usar 100vh para la altura */
-    margin: 0; /* Asegurarse de que no haya margen */
-  }
-  
+    
   .scorecard {
     background-color: #232D5E;
     border-radius: 10px;
