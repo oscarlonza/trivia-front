@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import style from '../../pages/Score/score.module.css'; 
 import Logo from '../../components/Logo';
+import constants from '../../utils/constants';
 
 const { scorecard, playeravatar, playerinfo, playername, playerscore } = style;
 
@@ -8,7 +9,7 @@ const ScoreCard = () => {
     const [scores, setScores] = useState([]);
 
     useEffect(() => {
-        fetch('http://13.58.14.235:9000/api/score/get-all')
+        fetch(`${constants.apiUrl}/api/score/get-all`)
             .then(response => response.json())
             .then(data => {
                 if (data.process) {

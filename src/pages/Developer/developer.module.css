@@ -1,7 +1,6 @@
 .page {
   padding: 30px;
   background: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);   
-  font-family: 'Roboto', sans-serif;
   height: 100vh;
   display: flex;
   flex-direction: column;

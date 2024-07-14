@@ -13,7 +13,6 @@
 }
 
 .titleForm {
-    font-family: 'Roboto', sans-serif;
     color: #ffcc01;
     font-size: 32px;
     font-weight: bold;
@@ -29,7 +28,6 @@
 }
 
 .labelForm {
-    font-family: 'Roboto', sans-serif;
     color: #ffcc01;
     font-size: 12px;
     margin-bottom: 10px;
@@ -41,7 +39,6 @@
     border-radius: 5px;
     border: none;
     color: black;
-    font-family: 'Roboto', sans-serif;
     font-size: 12px;
     font-weight: 600;
     padding: 10px 20px;

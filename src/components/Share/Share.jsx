@@ -1,6 +1,7 @@
 import style from './Share.module.css'
 import Modal from '../Modal';
 import React from "react";
+import constants from '../../utils/constants';
 
 const isLoggedIn = localStorage.getItem('user')
 
@@ -25,7 +26,7 @@ const Share = () => {
 
 
         try {
-            const sendSMS = await fetch('http://13.58.14.235:9000/api/send/send', {
+            const sendSMS = await fetch(`${constants.apiUrl}/api/send/send`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json',

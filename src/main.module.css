@@ -5,6 +5,7 @@
   --dark-blue: #252d59;
   --green: #29a63c;
   --yellow: #f2b705;
+  --yellow-forms: #ffce00;
   --red: #f20505;
   --dark-red: #810404;
   --gray: #1b2833;
@@ -34,6 +35,10 @@ body {
 body>div {
   flex-grow: 1;
   display: flex;
+}
+
+body>div>div {
+  flex-grow: 1
 }
 
 main {

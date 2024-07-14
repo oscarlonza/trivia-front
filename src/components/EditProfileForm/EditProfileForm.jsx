@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { jwtDecode } from "jwt-decode";
 import style from './editProfileForm.module.css';
 import { useNavigate } from 'react-router-dom';
+import constants from '../../utils/constants';
 
 const EditProfileForm = () => {
     
@@ -53,7 +54,7 @@ const EditProfileForm = () => {
             const token = localStorage.getItem('user');
             const userData = getUserData();
 
-            const update = await fetch(`http://13.58.14.235:9000/api/user/update/${profile._id}`, {
+            const update = await fetch(`${constants.apiUrl}/api/user/update/${profile._id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

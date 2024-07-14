@@ -5,6 +5,7 @@ import { parseDifficultyToText } from "@/utils/questions";
 
 import Loader from "../ui/Loader";
 import styles from "./QuestionCard.module.css";
+import constants from "../../utils/constants";
 
 const NO_QUESTIONS_MESSAGE =
   "No hay preguntas para mostrar. \n\r No hay preguntas en la base de datos o ya las contestaste todas.";
@@ -24,7 +25,7 @@ const QuestionCard = () => {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch("http://13.58.14.235:9000/api/question/get", {
+      const res = await fetch(`${constants.apiUrl}/api/question/get`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ const QuestionCard = () => {
       console.log(answer);
       try {
         const res = await fetch(
-          `http://13.58.14.235:9000/api/question/result/${question._id}`,
+          `${constants.apiUrl}/api/question/result/${question._id}`,
           {
             method: "POST",
             headers: {

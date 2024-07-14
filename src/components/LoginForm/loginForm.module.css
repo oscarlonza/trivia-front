@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .form {
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', sans-serif;
   font-size: large;
   font-weight: bold;
 }
@@ -13,9 +11,8 @@
   margin-bottom: 15px;
   border: none;
   border-radius: 5px;
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  background-color: black;  
+  color: white !important;
+  background-color: black !important;
 }
 
 .button {
@@ -25,16 +22,14 @@
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Roboto', sans-serif;
   font-size: large;
   font-weight: bold;
 }
 
 .label {
-  color: #ffce00;
+  color: var(--yellow-forms);
   margin-bottom: 5px;
   text-align: left;
-  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: large;
 }
@@ -44,7 +39,6 @@
   text-decoration: none;
   margin-top: 10px;
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
   font-weight: bold;
   font-size: large;
 }

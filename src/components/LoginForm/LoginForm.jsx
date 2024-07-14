@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { login_regex } from "../../services/validation/auth.validation"
 import style from './loginForm.module.css'
+import constants from '../../utils/constants';
 
 const {form, input, button, label, link} = style
 
@@ -22,7 +23,7 @@ const LoginForm = () => {
     if (error) return alert(error.details[0].message)
 
     try {
-      const login = await fetch('http://13.58.14.235:9000/api/auth/login', {
+      const login = await fetch(`${constants.apiUrl}/api/auth/login`, {
         method: 'POST',
         headers: {
           "Content-Type": 'application/json'

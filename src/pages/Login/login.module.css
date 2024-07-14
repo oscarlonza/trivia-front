@@ -1,31 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .fondo {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff3cac, #784ba0, #2b86c5);
-    font-family: 'Roboto', sans-serif;
   }
   
   .card {
     background-color: #1a1b41;
-    padding: 20px;
+    padding: 20px 20px 40px 20px;
     border-radius: 10px;
     text-align: center;
     width: 400px;
-    height: 400px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    font-family: 'Roboto', sans-serif;
   }
 
   
 @media (max-width: 768px) {
-    .card {
-      padding: 15px;
-    }
-  
     .input {
       padding: 8px;
     }
