@@ -16,20 +16,18 @@
 .inputs,
 .sendButton {
   width: 100%;
-  max-width: 400px;
-  height: 4.5vh;
   border-radius: 8px;
   border: none;
 }
 
 .inputs {
-  background: #1c2733;
+  background: var(--gray);
   color: white;
-  padding: 0px 10px;
+  padding: 8px;
 }
 
 .sendButton {
-  background: #fe0000;
+  background: var(--red);
   color: #fff;
   font-size: large;
   font-weight: bolder;
@@ -55,12 +53,11 @@
   margin-left: 10px;
 }
 
-@media (max-width: 1024px) {
+.linkText:hover{
+  text-decoration: underline;
+}
 
-  .inputs,
-  .sendButton {
-    height: 5vh;
-  }
+@media (max-width: 1024px) {
 
   .sendButton {
     font-size: 1rem;
@@ -74,11 +71,6 @@
 
 @media (max-width: 768px) {
 
-  .inputs,
-  .sendButton {
-    height: 5.5vh;
-  }
-
   .sendButton {
     font-size: 0.9rem;
   }
@@ -91,11 +83,6 @@
 
 @media (max-width: 425px) {
 
-  .inputs,
-  .sendButton {
-    height: 6vh;
-  }
-
   .sendButton {
     font-size: 0.8rem;
   }
@@ -107,11 +94,6 @@
 }
 
 @media (max-width: 375px) {
-
-  .inputs,
-  .sendButton {
-    height: 3vh;
-  }
 
   .sendButton {
     font-size: 0.8rem;
