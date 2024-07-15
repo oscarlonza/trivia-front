@@ -21,14 +21,16 @@ const EditProfileForm = () => {
     useEffect(() => {
         const token = localStorage.getItem('user');
         const token_decoded = jwtDecode(token);
-
+        console.log(token_decoded.user);
         const {
+            _id,
             name,
             nickname,
             cel
         } = token_decoded.user;
         setProfile(prevState => ({
             ...prevState,
+            _id,
             name,
             nickname,
             cel

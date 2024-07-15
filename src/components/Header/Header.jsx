@@ -28,13 +28,13 @@ const Header = (props) => {
     return (
         <div className={style.header}>
             <a className={style.logo} href="/">
-                    <img src="./Logo.png" alt="Trivia Superhéroes" />
-                </a>
-                <div className={style.score}>
-                    {scoreElement}
-                    {rankingElement}
-                </div>
-                {userElement}
+                <img src="./Logo.png" alt="Trivia Superhéroes" />
+            </a>
+            <div className={style.score}>
+                {scoreElement}
+                {rankingElement}
+            </div>
+            {userElement}
         </div>
 
     )

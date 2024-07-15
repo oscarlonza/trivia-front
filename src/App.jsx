@@ -22,14 +22,14 @@ const App = (props) => {
         <Route path="/login" element={<RedirectRoute element={<Login />} />} />
         <Route
           path="/developer"
-          element={<RedirectRoute element={<Developer />} />}
+          element={<Developer />}
         />
         <Route
           path="/dashboard"
           element={<ProtectedRoute element={<h1>Hola</h1>} />}
         />
 
-        <Route path="/score" element={<Score/>} />
+        <Route path="/score" element={<Score />} />
         <Route path="/editProfile" element={<EditProfile />} />
         <Route path="/*" element={<h1>404</h1>} />
       </Routes>
