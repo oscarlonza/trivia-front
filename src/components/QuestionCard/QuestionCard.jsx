@@ -6,11 +6,12 @@ import { parseDifficultyToText } from "@/utils/questions";
 import Loader from "../ui/Loader";
 import styles from "./QuestionCard.module.css";
 import constants from "../../utils/constants";
+import isAuthenticated from "@/services/auth";
 
 const NO_QUESTIONS_MESSAGE =
   "No hay preguntas para mostrar. \n\r No hay preguntas en la base de datos o ya las contestaste todas.";
 
-const QuestionCard = () => {
+const QuestionCard = (props) => {
   const [question, setQuestion] = useState({});
   const [result, setResult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +19,11 @@ const QuestionCard = () => {
 
   const userToken = localStorage.getItem("user");
   const userInfo = userToken ? jwtDecode(userToken).user : null;
+  const userIsAthenticated = isAuthenticated();
+
+  const headers = userIsAthenticated ?
+    { "Content-Type": "application/json", Authorization: userToken } :
+    { "Content-Type": "application/json" };
 
   const getQuestion = useCallback(async () => {
     setIsLoading(true);
@@ -27,13 +33,12 @@ const QuestionCard = () => {
     try {
       const res = await fetch(`${constants.apiUrl}/api/question/get`, {
         method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: userToken,
-        },
+        headers: headers,
       });
       const response = await res.json();
+
       console.log(response);
+
       if (response.process) {
         setQuestion(response.data);
       } else {
@@ -48,25 +53,28 @@ const QuestionCard = () => {
 
   const checkAnswer = useCallback(
     async (answer) => {
-      console.log(answer);
       try {
+        const body = userIsAthenticated ?
+          { user_id: userInfo?._id, answer: answer } :
+          { answer: answer };
+
         const res = await fetch(
           `${constants.apiUrl}/api/question/result/${question._id}`,
           {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: userToken,
-            },
-            body: JSON.stringify({
-              user_id: userInfo?._id,
-              answer: answer,
-            }),
+            headers: headers,
+            body: JSON.stringify(body),
           }
         );
         const response = await res.json();
+
+        console.log(response)
+
         if (response.process) {
           setResult(response.data.result);
+          if (props.checkAnswerCallback)
+            props.checkAnswerCallback(response.data.result ? question.difficulty : -1);
+
         } else {
           throw new Error("Error fetching answer", response);
         }
@@ -78,10 +86,10 @@ const QuestionCard = () => {
   );
 
   useEffect(() => {
-    if (userToken) {
-      setIsLoading(true);
-      getQuestion();
-    }
+    //if (userToken) {
+    setIsLoading(true);
+    getQuestion();
+    //}
   }, [userToken, getQuestion]);
 
   const content = useMemo(() => {
@@ -126,9 +134,8 @@ const QuestionCard = () => {
         ))}
         {result !== null && (
           <p
-            className={`${styles.questionResultLabel} ${
-              result ? styles.questionCorrect : styles.questionIncorrect
-            }`}
+            className={`${styles.questionResultLabel} ${result ? styles.questionCorrect : styles.questionIncorrect
+              }`}
           >
             {`Respuesta ${result ? "" : "in"}correcta`}
           </p>
@@ -144,7 +151,7 @@ const QuestionCard = () => {
     );
   }, [checkAnswer, error, getQuestion, isLoading, question, result]);
 
-  if (!userToken) return <div>Token is missing</div>;
+  /*if (!userToken) return <div>Token is missing</div>;*/
 
   return (
     <section className={styles.questionCard}>

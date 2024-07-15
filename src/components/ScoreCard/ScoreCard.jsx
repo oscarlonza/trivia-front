@@ -3,7 +3,7 @@ import style from '../../pages/Score/score.module.css';
 import Logo from '../../components/Logo';
 import constants from '../../utils/constants';
 
-const { scorecard, playeravatar, playerinfo, playername, playerscore } = style;
+const { scorecard, playerPosition, playeravatar, playerinfo, playername, playerscore } = style;
 
 const ScoreCard = () => {
     const [scores, setScores] = useState([]);
@@ -25,6 +25,7 @@ const ScoreCard = () => {
         <>
             {scores.map((player, index) => (
                 <div key={index} className={scorecard}>
+                    <div className={playerPosition}>{index+1}</div>
                     <div className={playeravatar}>
                         <Logo />
                     </div>

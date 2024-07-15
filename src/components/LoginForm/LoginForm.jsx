@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { login_regex } from "../../services/validation/auth.validation"
 import style from './loginForm.module.css'
 import constants from '../../utils/constants';
@@ -42,7 +42,6 @@ const LoginForm = () => {
       localStorage.setItem('user', response.data)
 
       const a = localStorage.getItem('user')
-      console.log(a);
 
       navigate('/')
 
@@ -59,7 +58,7 @@ const LoginForm = () => {
       <label htmlFor="password" className={label}>Password</label>   
       <input className={input} type="password" name="password" placeholder="******" required />      
       <input className={button} type="submit" value={"Ingresar"} />
-      <a href="/register" className={link}>Registrarse</a>
+      <NavLink to="/register" className={link}>Registrarse</NavLink>
     </form>
   )
 }

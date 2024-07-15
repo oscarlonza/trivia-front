@@ -1,35 +1,32 @@
 import style from "./header.module.css"
 import { jwtDecode } from 'jwt-decode'
 import UserIconMenu from '../UserIcon/'
+import { NavLink } from "react-router-dom"
+import isAuthenticated from "../../services/auth"
 
 const Header = (props) => {
 
     let localScore = -1
     let scoreElement = <></>
     const rankingUrl = "/score"
-    let rankingElement = <a href={rankingUrl}>Ranking</a>
+    let rankingElement = <NavLink to={rankingUrl}>Ranking</NavLink>
     let userElement = <div className={style.dummy}>
-        <a href="/login">Log in</a>
+        <NavLink to="/login">Log in</NavLink>
     </div>
 
-    const local = localStorage.getItem("user")
-    if (local) {
-        try {
-            const tokenDecode = jwtDecode(local)
-            localScore = tokenDecode.user.score.score
-            scoreElement = <p>Score: {props.score || localScore} </p>
-            rankingElement = <a href={rankingUrl}>Ranking: #{props.ranking || 1}</a>
-            userElement = <UserIconMenu />
-        } catch (error) {
-            console.log(error)
-        }
+    if(isAuthenticated()){
+        userElement = <UserIconMenu />
+        if(props.ranking > 0)
+            rankingElement = <NavLink to={rankingUrl}>Ranking: # {props.ranking}</NavLink>
+        if(props.score)
+            scoreElement = <p>Score: {props.score} </p>
     }
 
     return (
         <div className={style.header}>
-            <a className={style.logo} href="/">
+            <NavLink className={style.logo} to="/">
                 <img src="./Logo.png" alt="Trivia Superhéroes" />
-            </a>
+            </NavLink>
             <div className={style.score}>
                 {scoreElement}
                 {rankingElement}

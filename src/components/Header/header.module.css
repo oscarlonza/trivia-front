@@ -31,6 +31,10 @@
     margin-left: 2rem;
 }
 
+.score a:hover{
+    text-decoration: underline;
+}
+
 .dummy {
     background-color: #ffcc01;
     font-weight: bold;

@@ -35,6 +35,7 @@ const EditProfileForm = () => {
             nickname,
             cel
         }));
+
     }, []);
 
     const getUserData = () => {
