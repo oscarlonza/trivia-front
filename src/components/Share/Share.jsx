@@ -35,13 +35,13 @@ const Share = () => {
                     "Content-Type": 'application/json',
                     "Authorization": token
                 },
-                body: {
+                body: JSON.stringify({
                     "nickname": userName,
                     "cel": number
-                }
+                })
 
-            }
-            )
+            })
+
             if (!sendSMS.ok) {
                 return toast.error('Error en la peticion al servidor')
             }
@@ -49,7 +49,7 @@ const Share = () => {
             const response = await sendSMS.json()
 
             if (!response.process) {
-                return toast.error('Error al guardar el nuevo usuario')
+                return toast.error('Error al enviar mensaje')
             }
 
             toast.success('¡Invitación enviada!')
