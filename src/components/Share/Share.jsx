@@ -1,11 +1,9 @@
 import style from './Share.module.css'
 import Modal from '../Modal';
-import React from "react";
+import React, { useEffect } from "react";
 import constants from '../../utils/constants';
 import { toast } from 'react-toastify';
 import { jwtDecode } from 'jwt-decode';
-
-const isLoggedIn = localStorage.getItem('user')
 
 const Share = () => {
     const [open, setOpen] = React.useState(false);
@@ -17,29 +15,29 @@ const Share = () => {
     const handleOpen = () => {
         setOpen(true);
     };
-    
-    const token = localStorage.getItem('user')    
-    const token_decode = jwtDecode(token)
-    const userName = token_decode.user.nickname
 
     const hadleSubmit = async event => {
-
         event.preventDefault()
 
+        const token = localStorage.getItem('user')
+        if (!token) return toast.error('Regístrate para compartir')
+
+        const token_decode = jwtDecode(token)
+        const userName = token_decode.user.nickname
+
+        if (!userName) return toast.error('No se encontró nombre de usuario')
+
         const { number } = event.target
+        const body = { "cel": number.value }
 
         try {
-            const sendSMS = await fetch(`${constants.apiUrl}/api/send/send`, {
+            const sendSMS = await fetch(`${constants.apiUrl}/api/send`, {
                 method: 'POST',
                 headers: {
                     "Content-Type": 'application/json',
                     "Authorization": token
                 },
-                body: JSON.stringify({
-                    "nickname": userName,
-                    "cel": number
-                })
-
+                body: JSON.stringify(body)
             })
 
             if (!sendSMS.ok) {
@@ -62,12 +60,9 @@ const Share = () => {
 
     return (
         <>
-            {isLoggedIn ?
-                <button id={style.shareButton} onClick={handleOpen}>
-                    <img id={style.shareIcon} src="./share-icon.png" alt="Logo trivia" />
-                </button>
-                : null}
-
+            <button className={style.shareButton} onClick={handleOpen}>
+                <img className={style.shareIcon} src="./share-icon.png" alt="Logo trivia" />
+            </button>
 
             <Modal isOpen={open} onClose={handleClose}>
                 <h1>Compartir</h1>

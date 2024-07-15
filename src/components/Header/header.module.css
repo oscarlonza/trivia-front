@@ -28,11 +28,11 @@
     font-size: 1.25rem;
     display: flex;
     align-items: center;
+    gap: 1rem;
 }
 
 .score a {
     color: var(--header-text);
-    margin-left: 2rem;
 }
 
 .score a:hover{

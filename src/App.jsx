@@ -15,7 +15,7 @@ const App = (props) => {
 
   console.log("version 2.0.0");
   return (
-    <div>
+    <>
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -52,7 +52,7 @@ const App = (props) => {
         </Routes>
       </BrowserRouter>
 
-    </div>
+    </>
   );
 };
 
