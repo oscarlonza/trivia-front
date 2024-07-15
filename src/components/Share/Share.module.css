@@ -1,9 +1,50 @@
 #shareButton{
    border: none;
    background-color: transparent;
+   cursor: pointer;
+}
+
+#shareButton:hover{
+    filter: grayscale(0.5);
 }
 
 #shareIcon{
     width: 30px;
     height: auto;
+}
+
+.shareForm{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.shareForm input {
+    font-size: large;
+    padding: 8px;
+    border: none;
+    background-color: var(--gray);
+    color: white;
+    border-radius: 5px;
+}
+
+.shareButtons{
+    display: flex;
+    gap: 5px;
+    justify-content: space-between;
+}
+
+.shareButtons button:hover{
+    cursor: pointer;
+}
+
+.shareButtons button{
+    border: none;
+    border-radius: 5px;
+    font-size: large;
+    padding: 1rem;
+}
+
+.shareButtons button[type=submit]{
+    background-color: var(--yellow);
 }

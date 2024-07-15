@@ -2,6 +2,7 @@ import style from './Share.module.css'
 import Modal from '../Modal';
 import React from "react";
 import constants from '../../utils/constants';
+import { toast } from 'react-toastify';
 
 const isLoggedIn = localStorage.getItem('user')
 
@@ -39,40 +40,44 @@ const Share = () => {
 
             }
             )
-            if (!sendSMS.ok) return alert('Error en la peticion al servidor')
+            if (!sendSMS.ok) {
+                return toast.error('Error en la peticion al servidor')
+            }
 
             const response = await sendSMS.json()
 
-            if (!response.process) return alert('Error al guardar el nuevo usuario')
+            if (!response.process) {
+                return toast.error('Error al guardar el nuevo usuario')
+            }
 
-            alert('¡Invitación enviada!')
+            toast.success('¡Invitación enviada!')
             setOpen(false);
 
         } catch (error) {
-            alert('Error en la peticion al servidor')
+            toast.error('Error en la peticion al servidor')
         }
     }
 
     return (
         <>
-            {isLoggedIn ? 
+            {isLoggedIn ?
                 <button id={style.shareButton} onClick={handleOpen}>
                     <img id={style.shareIcon} src="./share-icon.png" alt="Logo trivia" />
-                </button> 
-            : null}
+                </button>
+                : null}
 
 
             <Modal isOpen={open} onClose={handleClose}>
-                <>
-                    <h1>Compartir</h1>
-                    <p>Invita a tus amigos a jugar trivia Marvel a través de SMS!</p>
-                    <form onSubmit={hadleSubmit}>
-                        <label htmlFor="number">+57</label>
-                        <input name="number" type="tel" placeholder="xxx xxxxxxx" maxLength="10" required></input>
+                <h1>Compartir</h1>
+                <p>Invita a tus amigos a jugar trivia Marvel a través de SMS!</p>
+                <form onSubmit={hadleSubmit} className={style.shareForm}>
+                    <label htmlFor="number">+57</label>
+                    <input name="number" type="tel" placeholder="xxx xxxxxxx" maxLength="10" required></input>
+                    <div className={style.shareButtons}>
                         <button type='submit'>Enviar</button>
                         <button type="button" onClick={handleClose}>Cancelar</button>
-                    </form>
-                </>
+                    </div>
+                </form>
             </Modal>
         </>
 

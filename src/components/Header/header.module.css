@@ -19,6 +19,10 @@
     width: 100%;
 }
 
+.shareButton{
+    margin-right: 1rem;
+}
+
 .score {
     color: var(--header-text);
     font-size: 1.25rem;

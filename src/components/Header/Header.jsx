@@ -1,8 +1,8 @@
 import style from "./header.module.css"
-import { jwtDecode } from 'jwt-decode'
 import UserIconMenu from '../UserIcon/'
 import { NavLink } from "react-router-dom"
 import isAuthenticated from "../../services/auth"
+import Share from "../Share"
 
 const Header = (props) => {
 
@@ -14,11 +14,11 @@ const Header = (props) => {
         <NavLink to="/login">Log in</NavLink>
     </div>
 
-    if(isAuthenticated()){
+    if (isAuthenticated()) {
         userElement = <UserIconMenu />
-        if(props.ranking > 0)
+        if (props.ranking > 0)
             rankingElement = <NavLink to={rankingUrl}>Ranking: # {props.ranking}</NavLink>
-        if(props.score)
+        if (props.score)
             scoreElement = <p>Score: {props.score} </p>
     }
 
@@ -28,6 +28,9 @@ const Header = (props) => {
                 <img src="./Logo.png" alt="Trivia Superhéroes" />
             </NavLink>
             <div className={style.score}>
+                <div className={style.shareButton}>
+                    <Share />
+                </div>
                 {scoreElement}
                 {rankingElement}
             </div>
