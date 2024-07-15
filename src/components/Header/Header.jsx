@@ -13,6 +13,7 @@ const Header = (props) => {
     let userElement = <div className={style.dummy}>
         <NavLink to="/login">Log in</NavLink>
     </div>
+    let shareElement = <></>
 
     if (isAuthenticated()) {
         userElement = <UserIconMenu />
@@ -20,6 +21,8 @@ const Header = (props) => {
             rankingElement = <NavLink to={rankingUrl}>Ranking: # {props.ranking}</NavLink>
         if (props.score)
             scoreElement = <p>Score: {props.score} </p>
+
+        shareElement = <div className={style.shareButton}><Share /></div>
     }
 
     return (
@@ -28,9 +31,7 @@ const Header = (props) => {
                 <img src="./Logo.png" alt="Trivia Superhéroes" />
             </NavLink>
             <div className={style.score}>
-                <div className={style.shareButton}>
-                    <Share />
-                </div>
+                {shareElement}
                 {scoreElement}
                 {rankingElement}
             </div>

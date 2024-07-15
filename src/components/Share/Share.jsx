@@ -3,6 +3,7 @@ import Modal from '../Modal';
 import React from "react";
 import constants from '../../utils/constants';
 import { toast } from 'react-toastify';
+import { jwtDecode } from 'jwt-decode';
 
 const isLoggedIn = localStorage.getItem('user')
 
@@ -16,15 +17,16 @@ const Share = () => {
     const handleOpen = () => {
         setOpen(true);
     };
+    
+    const token = localStorage.getItem('user')    
+    const token_decode = jwtDecode(token)
+    const userName = token_decode.user.nickname
 
     const hadleSubmit = async event => {
-        const userName = localStorage.getItem('user').nickname
-        const token = localStorage.getItem('user')
 
         event.preventDefault()
 
         const { number } = event.target
-
 
         try {
             const sendSMS = await fetch(`${constants.apiUrl}/api/send/send`, {
