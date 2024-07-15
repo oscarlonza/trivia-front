@@ -3,6 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import style from './editProfileForm.module.css';
 import { useNavigate } from 'react-router-dom';
 import constants from '../../utils/constants';
+import { toast } from 'react-toastify'
 
 const EditProfileForm = () => {
 
@@ -21,7 +22,7 @@ const EditProfileForm = () => {
     useEffect(() => {
         const token = localStorage.getItem('user');
         const token_decoded = jwtDecode(token);
-        console.log(token_decoded.user);
+
         const {
             _id,
             name,
@@ -77,18 +78,23 @@ const EditProfileForm = () => {
                 body: JSON.stringify(userData)
             });
 
-            if (!update.ok) return alert('Error en la peticion al servidor')
+            if (!update.ok){ 
+                return toast.error('Error en la peticion al servidor')
+            }
 
             const response = await update.json()
 
-            if (!response.process) return alert('Error al editar el usuario')
+            if (!response.process){
+                return toast.error('Error al editar el usuario')
+            } 
 
-            alert('Perfil actualizado exitosamente');
+            toast.success('Perfil actualizado exitosamente')
 
             navigate('/')
 
         } catch (error) {
-            console.error('Hubo un error actualizando el perfil', error);
+            //console.error('Hubo un error actualizando el perfil', error);
+            toast.error('Hubo un error actualizando el perfil', error)
         }
     };
 

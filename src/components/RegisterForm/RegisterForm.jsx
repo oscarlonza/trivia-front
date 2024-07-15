@@ -3,6 +3,7 @@ import { user_regex } from "../../services/validation/auth.validation.js";
 import style from "./registerForm.module.css";
 import { Link } from "react-router-dom";
 import constants from "../../utils/constants";
+import { toast } from 'react-toastify'
 
 const RegisterForm = () => {
   const navigate = useNavigate();
@@ -22,7 +23,9 @@ const RegisterForm = () => {
     };
 
     const { error } = user_regex.validate(user);
-    if (error) return alert(error.details[0].message);
+    if (error) {
+      return toast.error(error.details[0].message);
+    }
 
     try {
       const register = await fetch(`${constants.apiUrl}/api/auth/register`, {
@@ -33,17 +36,21 @@ const RegisterForm = () => {
         body: JSON.stringify(user),
       });
 
-      if (!register.ok) return alert("Error en la peticion al servidor");
+      if (!register.ok) {
+        return toast.error("Error en la peticion al servidor");
+      }
 
       const response = await register.json();
 
-      if (!response.process) return alert("Error al guardar el nuevo usuario");
+      if (!response.process) {
+        return toast.error("Error al guardar el nuevo usuario");
+      }
 
-      alert("Usuario guardado con exit");
+      toast.success("Usuario guardado con exit");
 
       navigate("/login");
     } catch (Error) {
-      alert("Error en la peticion al servidor");
+      toast.error("Error en la peticion al servidor");
     }
   };
 

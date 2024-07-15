@@ -30,7 +30,6 @@ const Home = () => {
   }, [])
 
   const onCheckAnswerCallback = (value) => {
-    console.log(value)
     setScore(Math.max(0, score + value))
     getRankingByNickname(currentUser.nickname)
       .then((value) => {
