@@ -1,7 +1,13 @@
-.card {
+.card {    
+    height: 100vh;
+    overflow: auto;
+}
+
+.container{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 10vh 0;
 }
 
 .card2 {
@@ -23,16 +29,6 @@
 }
 
 @media (max-width: 1024px) {
-    .card {
-        padding: 20px;
-    }
-
-    .card2 {
-        width: 70%;
-        height: auto;
-        margin-top: 8vw;
-        margin-bottom: 8vw;
-    }
 
     .card .logo img {
         width: 90px;
@@ -41,14 +37,6 @@
 }
 
 @media (max-width: 768px) {
-    .card {
-        padding: 20px;
-    }
-
-    .card2 {
-        width: 80%;
-        height: auto;
-    }
 
     .card .logo img {
         width: 80px;
@@ -57,34 +45,15 @@
 }
 
 @media (max-width: 425px) {
-    .card {
-        padding: 15px;
-    }
-
-    .card2 {
-        width: 90%;
-        height: auto;
-    }
-
     .card .logo img {
         width: 70px;
+        height: 70px;
     }
 }
 
 @media (max-width: 375px) {
-    .card {
-        height: 100vh;
-        padding: 10px;
-    }
-
-    .card2 {
-        width: 95%;
-        height: auto;
-        margin-top: 14vw;
-        margin-bottom: 14vw;
-    }
-
     .card .logo img {
         width: 60px;
+        height: 60px;
     }
 }

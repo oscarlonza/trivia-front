@@ -6,13 +6,13 @@ import Footer from '../../components/Footer'
 
 const Home = () => {
   return (
-    <main>
+    <div className={styles.main}>
       <Header />
       <div className={styles.mainContent}>
         <QuestionCard />
       </div>
       <Footer />
-    </main>
+    </div>
   );
 };
 

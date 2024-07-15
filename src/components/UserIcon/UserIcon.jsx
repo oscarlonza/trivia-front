@@ -13,13 +13,11 @@ const UserIconMenu = () => {
         setAnchorEl(event.currentTarget);
     };
 
-    console.log(userDecoded);
-
     const handleClose = () => {
         setAnchorEl(null);
     };
     const viewProfile = () => {
-        navigate("/viewprofile");
+        navigate("/editProfile");
     };
     const logout = () => {
         navigate("/login");

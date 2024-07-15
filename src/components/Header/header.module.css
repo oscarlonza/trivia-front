@@ -20,21 +20,21 @@
 }
 
 .score {
-    color: white;
+    color: var(--header-text);
     font-size: 1.25rem;
     display: flex;
     align-items: center;
 }
 
 .score a {
-    color: white;
+    color: var(--header-text);
     margin-left: 2rem;
 }
 
 .dummy {
     background-color: #ffcc01;
     font-weight: bold;
-    font-size: x-large;
+    font-size: 1rem;
     padding: 10px;
     border-radius: 50%;
     height: 35px;

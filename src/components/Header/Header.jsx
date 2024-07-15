@@ -6,7 +6,7 @@ const Header = (props) => {
 
     let localScore = -1
     let scoreElement = <></>
-    const rankingUrl = "#"
+    const rankingUrl = "/score"
     let rankingElement = <a href={rankingUrl}>Ranking</a>
     let userElement = <div className={style.dummy}>
         <a href="/login">Log in</a>

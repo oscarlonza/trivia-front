@@ -1,5 +1,6 @@
 .footer {
-    background-color: #232d5d;
+    background-color: var(--header-bg);
+    color: var(--header-text);
     display: flex;
     justify-content: center;
     align-items: center;

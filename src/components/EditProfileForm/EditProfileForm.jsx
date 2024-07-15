@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import constants from '../../utils/constants';
 
 const EditProfileForm = () => {
-    
+
     const navigate = useNavigate()
 
     const [profile, setProfile] = useState({
@@ -21,7 +21,18 @@ const EditProfileForm = () => {
     useEffect(() => {
         const token = localStorage.getItem('user');
         const token_decoded = jwtDecode(token);
-        setProfile(token_decoded.user);
+
+        const {
+            name,
+            nickname,
+            cel
+        } = token_decoded.user;
+        setProfile(prevState => ({
+            ...prevState,
+            name,
+            nickname,
+            cel
+        }));
     }, []);
 
     const getUserData = () => {

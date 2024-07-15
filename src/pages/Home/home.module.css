@@ -1,9 +1,16 @@
-.mainContent {
+.main{
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  gap: 30px;
+  overflow: auto;
+}
+
+.mainContent {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 36px;
-  flex-grow: 1;
 }
