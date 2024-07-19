@@ -24,9 +24,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Delete pakage-log
-        run: rm package-log.json
-
       - name: Install dependences
         run: npm install
 
